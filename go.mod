@@ -6,6 +6,7 @@ require (
 	github.com/dgraph-io/badger v1.5.4
 	github.com/dgryski/go-farm v0.0.0-20190323171310-30f6f3c2b8f8 // indirect
 	github.com/golang/protobuf v1.3.1 // indirect
+	github.com/gorilla/mux v1.8.0
 	github.com/mr-tron/base58 v1.1.1
 	github.com/pkg/errors v0.8.1 // indirect
 	github.com/smartystreets/goconvey v1.7.2 // indirect
