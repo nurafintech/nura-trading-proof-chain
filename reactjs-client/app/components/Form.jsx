@@ -24,25 +24,25 @@ export default class Form extends Component {
                                 <label className={styles.labelStyle} >
                                     Trade Number
                                 </label>
-                                <input className={styles.inputStyle} id="trade-num" type="text" placeholder="Ex: 1234" ref="trade" />
+                                <input className={styles.inputStyle} id="trade-num" type="text" placeholder="Ex: 1234" ref="tradeNumberRef" />
                             </div>
                             <div className={styles.divLabelInputStyle}>
                                 <label className={styles.labelStyle}>
                                     Daily Number
                                 </label>
-                                <input className={styles.inputStyle} id="daily-num" type="text" placeholder="Ex: 123" ref="DailyNumber" />
+                                <input className={styles.inputStyle} id="daily-num" type="text" placeholder="Ex: 123" ref="dailyNumberRef" />
                             </div>
                             <div className={styles.divLabelInputStyle}>
                                 <label className={styles.labelStyle} >
                                     Date
                                 </label>
-                                <input className={styles.inputStyle} id="title" type="text" placeholder="Ex: 01/01/01" ref="date" />
+                                <input className={styles.inputStyle} id="title" type="text" placeholder="Ex: 01/01/01" ref="dateRef" />
                             </div>
                             <div className={styles.divLabelInputStyle}>
                                 <label className={styles.labelStyle} >
                                     Time
                                 </label>
-                                <input className={styles.inputStyle} id="title" type="text" placeholder="Ex: 00:00" ref="time" />
+                                <input className={styles.inputStyle} id="title" type="text" placeholder="Ex: 00:00" ref="timeRef" />
                             </div>
                         </div>
                         <div className={styles.divRowStyle}>
@@ -51,7 +51,7 @@ export default class Form extends Component {
                                     Exchange
                                 </label>
                                 <div class="relative">
-                                    <select className={styles.selectStyle} id="exchange" ref="exchange">
+                                    <select className={styles.selectStyle} id="exchange" ref="exchangeRef">
                                         <option>Binance</option>
                                     </select>
                                 </div>
@@ -61,7 +61,7 @@ export default class Form extends Component {
                                     Call Type
                                 </label>
                                 <div class="relative">
-                                    <select className={styles.selectStyle} id="call-type" ref='callType'>
+                                    <select className={styles.selectStyle} id="call-type" ref='callTypeRef'>
                                         <option>Buy(Long)</option>
                                         <option>Sell(Short)</option>
                                     </select>
@@ -72,7 +72,7 @@ export default class Form extends Component {
                                     Trade Type
                                 </label>
                                 <div>
-                                    <select className={styles.selectStyle} id="trade-type" ref="tradeType">
+                                    <select className={styles.selectStyle} id="trade-type" ref="tradeTypeRef">
                                         <option>Intraday</option>
                                         <option>Swing</option>
                                         <option>Long Swing</option>
@@ -84,7 +84,7 @@ export default class Form extends Component {
                                 <label className={styles.labelStyle} >
                                     Pair
                                 </label>
-                                <input className={styles.inputStyle} id="pair" type="text" placeholder="Ex: BTC/USDT" ref="pair" />
+                                <input className={styles.inputStyle} id="pair" type="text" placeholder="Ex: BTC/USDT" ref="pairRef" />
                             </div>
                         </div>
                         <div className={styles.divRowStyle}>
@@ -92,25 +92,25 @@ export default class Form extends Component {
                                 <label className={styles.labelStyle} >
                                     First Entry Price
                                 </label>
-                                <input className={styles.inputStyle} id="entry1" type="text" placeholder="First Entry Price" ref="firstEntry" />
+                                <input className={styles.inputStyle} id="entry1" type="text" placeholder="First Entry Price" ref="firstEntryRef" />
                             </div>
                             <div className={styles.divLabelInputStyle}>
                                 <label className={styles.labelStyle} >
                                     Second Entry Price
                                 </label>
-                                <input className={styles.inputStyle} type="text" placeholder="Second Entry Price" ref="secondEntry" />
+                                <input className={styles.inputStyle} type="text" placeholder="Second Entry Price" ref="secondEntryRef" />
                             </div>
                             <div className={styles.divLabelInputStyle}>
                                 <label className={styles.labelStyle} >
                                     Target Price
                                 </label>
-                                <input className={styles.inputStyle} id="target" type="text" placeholder="Target Price" ref="target" />
+                                <input className={styles.inputStyle} id="target" type="text" placeholder="Target Price" ref="targetRef" />
                             </div>
                             <div className={styles.divLabelInputStyle}>
                                 <label className={styles.labelStyle} >
                                     Stop Loss
                                 </label>
-                                <input className={styles.inputStyle} id="stop" type="text" placeholder="Stop Loss" ref="stoploss" />
+                                <input className={styles.inputStyle} id="stop" type="text" placeholder="Stop Loss" ref="stoplossRef" />
                             </div>
                         </div>
                         <div className={styles.divRowStyle}>
@@ -119,7 +119,7 @@ export default class Form extends Component {
                                     Leverage
                                 </label>
                                 <div>
-                                    <select className={styles.selectStyle} id="status" ref="leverage">
+                                    <select className={styles.selectStyle} id="status" ref="leverageRef">
                                         <option>10x</option>
                                         <option>5x</option>
                                         <option>3x</option>
@@ -132,7 +132,7 @@ export default class Form extends Component {
                                     Base Candle Time
                                 </label>
                                 <div>
-                                    <select className={styles.selectStyle} id="status" ref="baseCandle">
+                                    <select className={styles.selectStyle} id="status" ref="baseCandleRef">
                                         <option>1d</option>
                                         <option>4h</option>
                                         <option>1h</option>
@@ -145,14 +145,14 @@ export default class Form extends Component {
                                 <label className={styles.labelStyle} >
                                     Source
                                 </label>
-                                <input className={styles.inputStyle} id="source" type="text" placeholder="Source" ref="source" />
+                                <input className={styles.inputStyle} id="source" type="text" placeholder="Source" ref="sourceRef" />
                             </div>
                             <div className={styles.divLabelInputStyle}>
                                 <label className={styles.labelStyle} >
                                     Status
                                 </label>
                                 <div>
-                                    <select className={styles.selectStyle} id="status" ref="tradeStatus" >
+                                    <select className={styles.selectStyle} id="status" ref="tradeStatusRef" >
                                         <option>4 Confirmed</option>
                                         <option>3 Confirmed</option>
                                         <option>2 Confirmed</option>
@@ -177,26 +177,26 @@ export default class Form extends Component {
     }
     handleClick(e) {
 
-        const tradeNumber = this.refs.trade.value.trim()
-        // const dailyNumber = this.refs.dailyNumber.value.trim()
-        // const date = this.refs.date.value.trim()
-        // const time = this.refs.time.value.trim()
-        // const exchange = this.refs.exchange.value.trim()
-        // const callType = this.refs.callType.value.trim()
-        // const tradeType = this.refs.tradeType.value.trim()
-        // const pair = this.refs.pair.value.trim()
-        // const firstEntry = this.refs.firstEntry.value.trim()
-        // const secondEntry = this.refs.secondEntry.value.trim()
-        // const target = this.refs.target.value.trim()
-        // const stoploss = this.refs.stoploss.value.trim()
-        // const leverage = this.refs.leverage.value.trim()
-        // const baseCandle = this.refs.baseCandle.value.trim()
-        // const source = this.refs.source.value.trim()
-        // const tradeStatus = this.refs.tradeStatus.value.trim()
+        const tradeNumber = this.refs.tradeNumberRef.value.trim()
+        const dailyNumber = this.refs.dailyNumberRef.value.trim()
+        const date = this.refs.dateRef.value.trim()
+        const time = this.refs.timeRef.value.trim()
+        const exchange = this.refs.exchangeRef.value.trim()
+        const callType = this.refs.callTypeRef.value.trim()
+        const tradeType = this.refs.tradeTypeRef.value.trim()
+        const pair = this.refs.pairRef.value.trim()
+        const firstEntry = this.refs.firstEntryRef.value.trim()
+        const secondEntry = this.refs.secondEntryRef.value.trim()
+        const target = this.refs.targetRef.value.trim()
+        const stoploss = this.refs.stoplossRef.value.trim()
+        const leverage = this.refs.leverageRef.value.trim()
+        const baseCandle = this.refs.baseCandleRef.value.trim()
+        const source = this.refs.sourceRef.value.trim()
+        const tradeStatus = this.refs.tradeStatusRef.value.trim()
 
-        // this.props.addTrade(tradeNumber, dailyNumber, date, time, exchange, callType, tradeType, pair, firstEntry, secondEntry, target, stoploss, leverage, baseCandle, source, tradeStatus)
+        this.props.addTrade(tradeNumber, dailyNumber, date, time, exchange, callType, tradeType, pair, firstEntry, secondEntry, target, stoploss, leverage, baseCandle, source, tradeStatus)
 
-        this.props.addTrade(tradeNumber)
+        // this.props.addTrade(tradeNumber)
 
         // tradeNumber.value = ''
         // dailyNumber.value = ''
@@ -217,66 +217,5 @@ export default class Form extends Component {
     }
 };
 
-function handleClick1(e) {
-    // tradeNumber.value = ''
-    // dailyNumber.value = ''
-    // date.value = ''
-    // time.value = ''
-    // exchange.value = ''
-    // callType.value = ''
-    // tradeType.value = ''
-    // pair.value = ''
-    // firstEntry.value = ''
-    // secondEntry.value = ''
-    // target.value = ''
-    // stoploss.value = ''
-    // leverage.value = ''
-    // baseCandle.value = ''
-    // source.value = ''
-    // tradeStatus.value = ''
-
-    // const tradeNumber = this.refs.tradeNumber.value.trim()
-    // const dailyNumber = this.refs.dailyNumber.value.trim()
-    // const date = this.refs.date.value.trim()
-    // const time = this.refs.time.value.trim()
-    // const exchange = this.refs.exchange.value.trim()
-    // const callType = this.refs.callType.value.trim()
-    // const tradeType = this.refs.tradeType.value.trim()
-    // const pair = this.refs.pair.value.trim()
-    // const firstEntry = this.refs.firstEntry.value.trim()
-    // const secondEntry = this.refs.secondEntry.value.trim()
-    // const target = this.refs.target.value.trim()
-    // const stoploss = this.refs.stoploss.value.trim()
-    // const leverage = this.refs.leverage.value.trim()
-    // const baseCandle = this.refs.baseCandle.value.trim()
-    // const source = this.refs.source.value.trim()
-    // const tradeStatus = this.refs.tradeStatus.value.trim()
-
-
-    this.props.addTrade(tradeNumber, dailyNumber, date,
-        time, exchange, callType, tradeType,
-        pair, firstEntry, secondEntry, target,
-        stoploss, leverage, baseCandle, source, tradeStatus)
-
-    const tradeNumber = this.refs.test.value.trim()
-    this.props.addTrade(tradeNumber)
-
-    tradeNumber.value = ''
-    dailyNumber.value = ''
-    date.value = ''
-    time.value = ''
-    exchange.value = ''
-    callType.value = ''
-    tradeType.value = ''
-    pair.value = ''
-    firstEntry.value = ''
-    secondEntry.value = ''
-    target.value = ''
-    stoploss.value = ''
-    leverage.value = ''
-    baseCandle.value = ''
-    source.value = ''
-    tradeStatus.value = ''
-}
 
 

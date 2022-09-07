@@ -43,12 +43,27 @@ export default class EmployeeApp extends React.Component {
         ).catch(function (error) { });
     }
     // addTrade(tradeNumber, dailyNumber, date, time, exchange, callType, tradeType, pair, firstEntry, secondEntry, target, stop, leverage, baseCandle, source, status) {
-    addTrade(tradeNumber) {
+    addTrade(tradeNumber, dailyNumber, date, time, exchange, callType, tradeType, pair, firstEntry, secondEntry, target, stop, leverage, baseCandle, source, status) {
         let _this = this;
         this.Axios.post(
             '/trade/add',
             {
                 tradeNumber,
+                dailyNumber,
+                date,
+                time,
+                exchange, 
+                callType,
+                tradeType,
+                pair,
+                firstEntry,
+                secondEntry,
+                target,
+                stop,
+                leverage,
+                baseCandle,
+                source,
+                status
             }
             ).then(
             function (response) {
