@@ -3,6 +3,7 @@ const React = require('react');
 var axios = require('axios');
 import EmployeeList from './employee-list.jsx'
 import AddEmployee from './add-employee.jsx'
+import Form from './Form.jsx';
 export default class EmployeeApp extends React.Component {
     constructor(props) {
         super(props);
@@ -40,6 +41,7 @@ export default class EmployeeApp extends React.Component {
     render() {
         return (
             <div>
+                <Form/>
                 <AddEmployee addEmployee={this.addEmployee} />
                 <EmployeeList employees={this.state.employees} />
             </div>

@@ -1,11 +1,11 @@
 const React = require('react');
 import Employee from './employee.jsx'
 
-export default class EmployeeList extends React.Component {
+export default class EmployeeList extends React.Component{
 
-	render() {
+    render() {
 		var employees = this.props.employees.map((employee, i) =>
-			<Employee key={i} employee={employee} />
+			<Employee key={i} employee={employee}/>
 		);
 
 		return (
@@ -13,7 +13,6 @@ export default class EmployeeList extends React.Component {
 				<tbody>
 					<tr>
 						<th>FirstName</th>
-						<th>LastName</th>
 					</tr>
 					{employees}
 				</tbody>
