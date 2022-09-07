@@ -4,6 +4,8 @@ var axios = require('axios');
 import EmployeeList from './employee-list.jsx'
 import AddEmployee from './add-employee.jsx'
 import Form from './Form.jsx';
+import Navbar from './Navbar.jsx';
+
 export default class EmployeeApp extends React.Component {
     constructor(props) {
         super(props);
@@ -41,6 +43,7 @@ export default class EmployeeApp extends React.Component {
     render() {
         return (
             <div>
+                <Navbar/>
                 <Form/>
                 <AddEmployee addEmployee={this.addEmployee} />
                 <EmployeeList employees={this.state.employees} />
