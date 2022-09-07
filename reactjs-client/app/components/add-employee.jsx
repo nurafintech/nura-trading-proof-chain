@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 
-export default class AddEmployee extends React.Component {
+export default class AddEmployee extends Component{
 
    render() {
       return (

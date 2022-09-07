@@ -10,8 +10,9 @@ import HeroSection from './HeroSection.jsx';
 export default class EmployeeApp extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { employees: [] };
+        this.state = { employees: [], trades: [] };
         this.addEmployee = this.addEmployee.bind(this);
+        this.addTrade = this.addTrade.bind(this);
 
         this.Axios = axios.create(
             {
@@ -33,7 +34,7 @@ export default class EmployeeApp extends React.Component {
             '/employee/add',
             {
                 firstName,
-                lastName 
+                lastName
             }
         ).then(
             function (response) {
@@ -41,11 +42,26 @@ export default class EmployeeApp extends React.Component {
             }
         ).catch(function (error) { });
     }
+    // addTrade(tradeNumber, dailyNumber, date, time, exchange, callType, tradeType, pair, firstEntry, secondEntry, target, stop, leverage, baseCandle, source, status) {
+    addTrade(tradeNumber) {
+        let _this = this;
+        this.Axios.post(
+            '/trade/add',
+            {
+                tradeNumber,
+            }
+            ).then(
+            function (response) {
+                _this.setState({ trades: response.data });
+                console.log("jjj", trades)
+            }
+        ).catch(function (error) { });
+    }
     render() {
         return (
             <div>
-                <HeroSection/>
-                <Form/>
+                <HeroSection />
+                <Form addTrade={this.addTrade} />
                 <AddEmployee addEmployee={this.addEmployee} />
                 <EmployeeList employees={this.state.employees} />
             </div>
