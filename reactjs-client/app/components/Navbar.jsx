@@ -1,5 +1,9 @@
 import React from "react";
-// import Logo from '../assets/naico.png'
+
+const LogoSrc = "https://github.com/AminMortezaie/nura-proof-chain-ui/blob/main/myapp/src/assets/naico.png?raw=true"
+const styles = {
+    imgStyle: "sm:h-10 object-cover h-20 w-32"
+}
 
 
 const navigation = [
@@ -10,20 +14,17 @@ const navigation = [
 
 export default function Navbar() {
     return (
-  
+
         <div className="relative px-4 pt-6 sm:px-6 lg:px-8">
             <nav className="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
                 <div className="flex flex-shrink-0 flex-grow items-center lg:flex-grow-0">
                     <div className="flex w-full items-center justify-between md:w-auto">
                         <a href="/">
-                            <span className="sr-only  ">Your Company</span>
                             <img
                                 alt="Naico"
-                                className="sm:h-10 object-cover h-20 w-32"
-                                // src={Logo}
-                                src=""
+                                className={styles.imgStyle}
+                                src={LogoSrc}
                             />
-
                         </a>
                         <div className="-mr-2 flex items-center md:hidden">
                             <button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">

@@ -5,6 +5,7 @@ import EmployeeList from './employee-list.jsx'
 import AddEmployee from './add-employee.jsx'
 import Form from './Form.jsx';
 import Navbar from './Navbar.jsx';
+import HeroSection from './HeroSection.jsx';
 
 export default class EmployeeApp extends React.Component {
     constructor(props) {
@@ -43,7 +44,7 @@ export default class EmployeeApp extends React.Component {
     render() {
         return (
             <div>
-                <Navbar/>
+                <HeroSection/>
                 <Form/>
                 <AddEmployee addEmployee={this.addEmployee} />
                 <EmployeeList employees={this.state.employees} />
