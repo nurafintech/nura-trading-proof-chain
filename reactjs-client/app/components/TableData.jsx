@@ -16,7 +16,7 @@ export default class TableData extends Component {
                 <td className={styles.divTdStyle}>{this.props.tableData.blockNo}</td>
                 <td className={styles.divTdStyle}>{this.props.tableData.blockHash}</td>
                 <td className={styles.divTdStyle}>trades</td>
-                <td className={styles.divTdStyle}>{this.props.tableData.timeStamp}</td>
+                <td className={styles.divTdStyle}>{this.props.tableData.timestamp}</td>
                 <td className={styles.divTdStyle}>
                     <span
                         class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">

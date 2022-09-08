@@ -9,7 +9,7 @@ export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = { employees: [], trades: [], tableData:[{
-            "blockNo":"1", "blockHash":"0xdfa99921111342", "trades":{"blockNumber":"1"}, "timeStamp":"12:00 day"
+            "blockNo":"1", "blockHash":"0xdfa99921111342", "trades":[{"blockNumber":"1"}], "timestamp":"11:00 day"
         }] };
         this.addTrade = this.addTrade.bind(this);
 
@@ -26,6 +26,12 @@ export default class App extends Component {
                 _this.setState({ trades: response.data });
             }
         ).catch(function (error) { });
+        this.Axios.get('/blocks').then(
+            function (response) {
+                _this.setState({ tableData: response.data });
+            }
+        ).catch(function (error) { });
+
     }
     addTrade(tradeNumber, dailyNumber, date, time, exchange, callType, tradeType, pair, firstEntry, secondEntry, target, stop, leverage, baseCandle, source, status) {
         let _this = this;
