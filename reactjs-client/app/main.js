@@ -1,12 +1,8 @@
 'use strict';
-const React = require('react');
-const ReactDOM = require('react-dom')
-import { render } from 'react-dom'
+import React from 'react'
+import ReactDOM from 'react-dom'
 window.React = React
 
-import EmployeeApp from './components/employee-app.jsx'
+import App from './components/App.jsx'
 
-ReactDOM.render(
-		<EmployeeApp />,
-	document.getElementById('react')
-)
+ReactDOM.render( < App /> , document.getElementById('react'))
