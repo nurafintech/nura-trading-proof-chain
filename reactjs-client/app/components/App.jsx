@@ -52,7 +52,6 @@ export default class App extends Component {
             }
             ).then(function (response) {
                 _this.setState({ trades: response.data });
-                console.log("jjj", trades)
             }
         ).catch(function (error) { });
     }
