@@ -1,5 +1,5 @@
 'use strict';
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import axios from 'axios';
 import Form from './Form.jsx';
 import HeroSection from './HeroSection.jsx';
@@ -8,9 +8,17 @@ import Table from './Table.jsx'
 export default class App extends Component {
     constructor(props) {
         super(props);
-        this.state = { employees: [], trades: [], tableData:[{
-            "blockNo":"1", "blockHash":"0xdfa99921111342", "trades":[{"blockNumber":"1"}], "timestamp":"11:00 day"
-        }] };
+        this.state = {
+            employees: [], trades: [],
+            tableData: [
+                {
+                    "blockNo": "2", "blockHash": "0xdfa99921111342", "trades": [{ "tradeNumber": "2", "dailyNumber": "1" }], "timestamp": "14:00 day"
+                },
+                {
+                    "blockNo": "1", "blockHash": "0xaaa99921111112", "trades": [{ "tradeNumber": "1", "dailyNumber":"1" }], "timestamp": "11:00 day"
+                }
+            ]
+        };
         this.addTrade = this.addTrade.bind(this);
 
         this.Axios = axios.create(
@@ -42,7 +50,7 @@ export default class App extends Component {
                 dailyNumber,
                 date,
                 time,
-                exchange, 
+                exchange,
                 callType,
                 tradeType,
                 pair,
@@ -55,9 +63,9 @@ export default class App extends Component {
                 source,
                 status
             }
-            ).then(function (response) {
-                _this.setState({ trades: response.data });
-            }
+        ).then(function (response) {
+            _this.setState({ trades: response.data });
+        }
         ).catch(function (error) { });
     }
     render() {
@@ -66,7 +74,7 @@ export default class App extends Component {
             <div>
                 <HeroSection />
                 <Form addTrade={this.addTrade} />
-                <Table tableData={this.state.tableData}/>
+                <Table tableData={this.state.tableData} />
             </div>
         )
     }
