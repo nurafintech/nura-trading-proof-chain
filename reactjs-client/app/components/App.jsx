@@ -1,6 +1,6 @@
 'use strict';
 import React, {Component} from 'react'
-var axios = require('axios');
+import axios from 'axios';
 import Form from './Form.jsx';
 import HeroSection from './HeroSection.jsx';
 import Table from './Table.jsx'
@@ -22,28 +22,9 @@ export default class App extends Component {
     }
     componentDidMount() {
         let _this = this;
-        this.Axios.get('/employees').then(
-            function (response) {
-                _this.setState({ employees: response.data });
-            }
-        ).catch(function (error) { });
         this.Axios.get('/trades').then(
             function (response) {
                 _this.setState({ trades: response.data });
-            }
-        ).catch(function (error) { });
-    }
-    addEmployee(firstName, lastName) {
-        let _this = this;
-        this.Axios.post(
-            '/employee/add',
-            {
-                firstName,
-                lastName
-            }
-        ).then(
-            function (response) {
-                _this.setState({ employees: response.data });
             }
         ).catch(function (error) { });
     }
@@ -81,10 +62,6 @@ export default class App extends Component {
             <div>
                 <HeroSection />
                 <Form addTrade={this.addTrade} />
-                {/* <AddEmployee addEmployee={this.addEmployee} /> */}
-                {/* <EmployeeList employees={this.state.employees} /> */}
-                {/* <TradeList trades={this.state.trades}/> */}
-                {/* <Table3/> */}
                 <Table tableData={this.state.tableData}/>
             </div>
         )
