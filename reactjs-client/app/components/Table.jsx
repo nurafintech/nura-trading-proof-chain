@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TableData from "./table-data";
+import TableData from "./TableData";
 
 const styles = {
     divFormSectionStyle: "w-full rounded mx-auto justify-center flex py-12 px-12 lg:px-24 mb-12",

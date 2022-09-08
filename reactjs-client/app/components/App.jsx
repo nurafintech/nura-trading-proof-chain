@@ -11,7 +11,6 @@ export default class App extends Component {
         this.state = { employees: [], trades: [], tableData:[{
             "blockNo":"1", "blockHash":"0xdfa99921111342", "trades":{"blockNumber":"1"}, "timeStamp":"12:00 day"
         }] };
-        this.addEmployee = this.addEmployee.bind(this);
         this.addTrade = this.addTrade.bind(this);
 
         this.Axios = axios.create(
