@@ -4,6 +4,7 @@ import axios from 'axios'
 import Form from './Form.jsx'
 import HeroSection from './HeroSection.jsx'
 import Table from './BlockTable.jsx'
+import TradeDetailTable from './TradeDetailTable.jsx'
 
 export default class App extends Component {
   constructor(props) {
@@ -89,6 +90,7 @@ export default class App extends Component {
   }
   render() {
     console.log(this.state.tableData)
+
     return (
       <div>
         <HeroSection />
