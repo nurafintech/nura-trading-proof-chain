@@ -11,6 +11,8 @@ const styles = {
   divBlockNumberStyle:
     'items-center font-bold px-3 py-4 border-b border-l border-gray-700 text-left bg-indigo-700 text-white',
   divFormStyle: 'bg-gray-100 shadow rounded px-8 pt-6 pb-8 mb-4 flex flex-col',
+  spanStyle:
+    'px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100',
 }
 
 export default class BlockTableData extends Component {
@@ -24,9 +26,7 @@ export default class BlockTableData extends Component {
         </td>
         <td className={styles.divTdStyle}>{this.props.tableData.timestamp}</td>
         <td className={styles.divTdStyle}>
-          <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
-            Approved
-          </span>
+          <span className={styles.spanStyle}>Approved</span>
         </td>
       </tr>
     )
