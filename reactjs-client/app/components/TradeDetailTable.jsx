@@ -46,7 +46,7 @@ export default class TradeDetailTable extends Component {
       <table className="rounded">
         <thead>
           <tr>
-            <th className={styles.divThStyle}>Number </th>
+            <th className={styles.divThStyle}>No. </th>
             <th className={styles.divThStyle}>Date </th>
             <th className={styles.divThStyle}>Time</th>
             <th className={styles.divThStyle}>Call Type</th>

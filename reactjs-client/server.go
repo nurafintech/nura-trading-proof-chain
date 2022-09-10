@@ -92,7 +92,12 @@ func init() {
 			CallType: "Buy(Long)", Pair: "BTC/USDT", FirstEntry: "21000",
 			Target: "22000", Stoploss: "20000", BaseCandle: "4h", Source: "Amin", TradeStatus: "4 Confirmed",
 		},
-		Trade{TradeNumber: "2", DailyNumber: "2"},
+		Trade{
+			TradeNumber: "2", DailyNumber: "2",
+			Date: "10/06/22", Time: "13:00", Exchange: "Binance",
+			CallType: "Buy(Long)", Pair: "BTC/USDT", FirstEntry: "22000",
+			Target: "23000", Stoploss: "21000", BaseCandle: "1d", Source: "Akbar Agha", TradeStatus: "4 Confirmed",
+		},
 	}
 }
 
