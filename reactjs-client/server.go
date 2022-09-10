@@ -86,7 +86,12 @@ func init() {
 		Employee{Id: "2", FirstName: "Baz", LastName: "Qux"},
 	}
 	trades = Trades{
-		Trade{TradeNumber: "1", DailyNumber: "1"},
+		Trade{
+			TradeNumber: "1", DailyNumber: "1",
+			Date: "10/06/22", Time: "12:00", Exchange: "Binance",
+			CallType: "Buy(Long)", Pair: "BTC/USDT", FirstEntry: "21000",
+			Target: "22000", Stoploss: "20000", BaseCandle: "4h", Source: "Amin", TradeStatus: "4 Confirmed",
+		},
 		Trade{TradeNumber: "2", DailyNumber: "2"},
 	}
 }
