@@ -58,11 +58,11 @@ export default class App extends Component {
     firstEntry,
     secondEntry,
     target,
-    stop,
+    stoploss,
     leverage,
     baseCandle,
     source,
-    status,
+    tradeStatus,
   ) {
     let _this = this
     this.Axios.post('/trade/add', {
@@ -77,11 +77,11 @@ export default class App extends Component {
       firstEntry,
       secondEntry,
       target,
-      stop,
+      stoploss,
       leverage,
       baseCandle,
       source,
-      status,
+      tradeStatus,
     })
       .then(function (response) {
         _this.setState({ trades: response.data })
