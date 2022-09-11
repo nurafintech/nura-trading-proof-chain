@@ -38,29 +38,34 @@ type Route struct {
 	HandlerFunc http.HandlerFunc
 }
 
+// MinifiedBlocks used for caching last n blocks and sending as response to http requests
+type MinifiedBlocks struct {
+	LastNthMinifiedBlocks []BlockDto
+	chain                 *blockchain.BlockChain
+}
+
+var minifiedBlocks MinifiedBlocks
+
 type Routes []Route
 
 var routes = Routes{
 	Route{
-		"getTrades",
+		"getMinifiedBlocks",
 		"GET",
 		"/blocks",
-		getTrades,
+		minifiedBlocks.getMinifiedBlocks,
 	},
 	Route{
 		"addTrade",
 		"POST",
 		"/trades/add",
-		addTrades,
+		addTradeSignals,
 	},
 }
 
 type Trades []trade.SignalDetail
 
 var trades []trade.SignalDetail
-
-// LastNthMinifiedBlocks used for caching last n blocks and sending as response to http requests
-var LastNthMinifiedBlocks = make([]BlockDto, LastNthBlockDTOs)
 
 //ticker and related chanel to mine automatically
 var ticker = time.NewTicker(mineAfter * time.Minute)
@@ -140,11 +145,12 @@ func mineRepeatedly(chain *blockchain.BlockChain) {
 }
 
 // setLastNthBlockDTOs function is used for the http GET /blocks endpoint
-func setLastNthBlockDTOs(lastN int, chain *blockchain.BlockChain) {
-	iter := chain.Iterator()
+func (m *MinifiedBlocks) setLastNthBlockDTOs(lastN int) {
+
+	iter := m.chain.Iterator()
 	for {
 		block := iter.Next()
-		LastNthMinifiedBlocks[lastN-1] = BlockDto{
+		m.LastNthMinifiedBlocks[lastN-1] = BlockDto{
 			block.Hash,
 			time.Unix(block.Timestamp, 0),
 			block.TradeData,
@@ -156,12 +162,13 @@ func setLastNthBlockDTOs(lastN int, chain *blockchain.BlockChain) {
 	}
 }
 
-func getTrades(w http.ResponseWriter, r *http.Request) {
+func (m *MinifiedBlocks) getMinifiedBlocks(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("inside add trades")
-	json.NewEncoder(w).Encode(LastNthMinifiedBlocks)
+	m.setLastNthBlockDTOs(LastNthBlockDTOs)
+	json.NewEncoder(w).Encode(m.LastNthMinifiedBlocks)
 }
 
-func addTrades(w http.ResponseWriter, r *http.Request) {
+func addTradeSignals(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("not inside add trades")
 	tradeData := trade.SignalDetail{}
 	err := json.NewDecoder(r.Body).Decode(&tradeData)
@@ -378,25 +385,25 @@ func HandleBlock(request []byte, chain *blockchain.BlockChain) {
 		delete(tradePool, trd.TradeNumber)
 	}
 
-	LastNthMinifiedBlocks = append(
-		LastNthMinifiedBlocks[1:],
-		BlockDto{
-			block.Hash,
-			time.Unix(block.Timestamp, 0),
-			block.TradeData,
-			block.Height,
-		})
-	//lastNthMinifiedBlocks
 	fmt.Printf("Added block %x\n", block.Hash)
 
 	if len(blocksInTransit) > 0 {
+		ticker.Reset(mineAfter * time.Minute)
 		blockHash := blocksInTransit[0]
 		SendGetData(payload.AddrFrom, "block", blockHash)
 
 		blocksInTransit = blocksInTransit[1:]
 	} else {
+		ticker.Reset(mineAfter * time.Minute)
 		UTXOSet := blockchain.UTXOSet{chain}
 		UTXOSet.Reindex()
+		if nodeAddress == KnownNodes[0] {
+			for _, node := range KnownNodes {
+				if node != nodeAddress && node != payload.AddrFrom {
+					SendInv(node, "block", [][]byte{block.Hash})
+				}
+			}
+		}
 	}
 }
 
@@ -558,15 +565,6 @@ func MineTx(chain *blockchain.BlockChain, forceMine bool) {
 
 	newBlock := chain.MineBlock(txs, tradeDetails)
 
-	LastNthMinifiedBlocks = append(
-		LastNthMinifiedBlocks[1:],
-		BlockDto{
-			newBlock.Hash,
-			time.Unix(newBlock.Timestamp, 0),
-			newBlock.TradeData,
-			newBlock.Height,
-		})
-
 	UTXOSet := blockchain.UTXOSet{chain}
 	UTXOSet.Reindex()
 
@@ -663,10 +661,13 @@ func StartServer(nodeID, minerAddress string) {
 	defer ln.Close()
 
 	chain := blockchain.ContinueBlockChain(nodeID)
+	//mainChain = chain
 	defer chain.Database.Close()
 	go CloseDB(chain)
 
-	setLastNthBlockDTOs(LastNthBlockDTOs, chain)
+	minifiedBlocks = MinifiedBlocks{
+		LastNthMinifiedBlocks: make([]BlockDto, LastNthBlockDTOs),
+		chain:                 chain}
 
 	if nodeAddress == KnownNodes[0] {
 		go startHttpServer()
