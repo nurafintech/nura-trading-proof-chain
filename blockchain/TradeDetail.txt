@@ -1,0 +1,18 @@
+type TradeDetail struct {
+	TotalNo        int
+	DailyNo        int
+	Date           string
+	Time           string
+	Exchange       string
+	CallType       string
+	TradeType      string
+	Pair           string
+	EntryPrice     float32
+	EntryPrice2    float32
+	TargetPrice    float32
+	StopLoss       float32
+	Leverage       string
+	BaseCandleTime string
+	Source         string
+	Status         string
+}
