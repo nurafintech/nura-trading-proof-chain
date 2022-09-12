@@ -691,8 +691,7 @@ func startHttpServer() {
 	muxRouter := mux.NewRouter().StrictSlash(true)
 	router := AddRoutes(muxRouter)
 
-	// Uncomment in case you want to have a builtin html based files
-	//router.PathPrefix("/").Handler(http.FileServer(http.Dir("./assets/")))
+	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./network/assets/")))
 
 	httpErr := http.ListenAndServe(HttpConnHost+":"+HttpConnPort, router)
 	if httpErr != nil {

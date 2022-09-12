@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 const styles = {
-    divFormSectionStyle: "w-full bg-gray-100 mx-auto max-w-6xl py-24 px-12 lg:px-24 shadow-xl mb-24",
+    divFormSectionStyle: "w-full bg-gray-100 mx-auto max-w-6xl py-24 px-12 lg:px-24 shadow-xl mb-24 my-10",
     divFormStyle: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col",
     divRowStyle: "-mx-3 md:flex mb-6",
     divLabelInputStyle: "md:w-1/4 px-3",
@@ -195,25 +195,6 @@ export default class Form extends Component {
         const tradeStatus = this.refs.tradeStatusRef.value.trim()
 
         this.props.addTrade(tradeNumber, dailyNumber, date, time, exchange, callType, tradeType, pair, firstEntry, secondEntry, target, stoploss, leverage, baseCandle, source, tradeStatus)
-
-        // this.props.addTrade(tradeNumber)
-
-        // tradeNumber.value = ''
-        // dailyNumber.value = ''
-        // date.value = ''
-        // time.value = ''
-        // exchange.value = ''
-        // callType.value = ''
-        // tradeType.value = ''
-        // pair.value = ''
-        // firstEntry.value = ''
-        // secondEntry.value = ''
-        // target.value = ''
-        // stoploss.value = ''
-        // leverage.value = ''
-        // baseCandle.value = ''
-        // source.value = ''
-        // tradeStatus.value = ''
     }
 };
 
