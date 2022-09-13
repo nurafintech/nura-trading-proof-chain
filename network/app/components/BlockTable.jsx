@@ -22,7 +22,7 @@ export default class BlockTable extends Component {
     var tableData = this.props.tableData.slice(0).reverse().map((tData, i) => {
       if (tData.blockHash!=null){
       return (
-        <TableData key={i} tableData={tData} blockNo={i} />
+        <TableData key={i} tableData={tData} blockNo={9-i} />
       )}
     })
     console.log(this.props.tableData)
