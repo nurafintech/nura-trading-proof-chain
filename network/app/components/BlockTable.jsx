@@ -11,19 +11,16 @@ const styles = {
   divBlockNumberStyle:
     'items-center font-bold px-3 py-4 border-b border-l border-gray-700 text-left bg-indigo-700 text-white',
   divFormStyle: 'bg-gray-100 shadow rounded px-8 pt-6 pb-8 mb-4 flex flex-col',
-  // divTableStyle: "shadow-md",
 }
 
 export default class BlockTable extends Component {
-  // var trades = this.props.tableData
-
-
   render() {
     var tableData = this.props.tableData.slice(0).reverse().map((tData, i) => {
-      if (tData.blockHash!=null){
-      return (
-        <TableData key={i} tableData={tData} blockNo={9-i} />
-      )}
+      if (tData.blockHash != null) {
+        return (
+          <TableData key={i} tableData={tData} blockNo={9 - i} />
+        )
+      }
     })
     console.log(this.props.tableData)
     return (

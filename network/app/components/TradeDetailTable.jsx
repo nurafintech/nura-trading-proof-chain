@@ -47,10 +47,8 @@ export default class TradeDetailTable extends Component {
       })
     }
     return (
-
-      <table className="rounded">
-
-        <thead>
+      <table className="rounded transition  duration-700 ease-out ">
+        <thead className='transition duration-700 ease-out '>
           {TradeData ? <tr>
             <th className={styles.divThStyle}>No. </th>
             <th className={styles.divThStyle}>Date </th>
@@ -62,9 +60,12 @@ export default class TradeDetailTable extends Component {
             <th className={styles.divThStyle}>Stop</th>
             <th className={styles.divThStyle}>Candle</th>
             <th className={styles.divThStyle}>Status</th>
-          </tr> : <h1>
-            There is no trade data in this Block.
-            </h1>}
+          </tr> :
+            <tr>
+              <th className={'transition ease-in-out delay-150'}>
+                There is no trade data in this Block.
+              </th>
+            </tr>}
         </thead>
         <tbody>{TradeData}</tbody>
       </table>

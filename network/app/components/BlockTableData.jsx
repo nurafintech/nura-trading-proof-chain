@@ -22,7 +22,6 @@ export default class BlockTableData extends Component {
         <td className={styles.divTdStyle}>{this.props.tableData.blockNo}</td>
         <td className={styles.divTdStyle}>{this.props.tableData.blockHash}</td>
         <td className={styles.divTdStyle}>
-          {console.log("blockNOOOOO",this.props.blockNo)}
           <Modal buttonTitle="Show Trade Data" modalTitle="Trades Detail" blockNumber={this.props.blockNo} />
         </td>
         <td className={styles.divTdStyle}>{this.props.tableData.timestamp}</td>
