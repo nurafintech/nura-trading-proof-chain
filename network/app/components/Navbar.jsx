@@ -24,9 +24,8 @@ const styles = {
 
 
 const navigation = [
-    { name: 'Intro', href: '#' },
     { name: 'Blockchain Data', href: '#' },
-    { name: 'Trading Data', href: '#' },
+    { name: 'Submit Trading Data', href: '#' },
 ]
 export default function Navbar() {
     return (
