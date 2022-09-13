@@ -17,11 +17,14 @@ const styles = {
 export default class BlockTable extends Component {
   // var trades = this.props.tableData
 
-  
+
   render() {
-    var tableData = this.props.tableData.map((tData, i) => (
-      <TableData key={i} tableData={tData} blockNo={i}  />
-    ))
+    var tableData = this.props.tableData.slice(0).reverse().map((tData, i) => {
+      if (tData.blockHash!=null){
+      return (
+        <TableData key={i} tableData={tData} blockNo={i} />
+      )}
+    })
     console.log(this.props.tableData)
     return (
       <div className={styles.divFormStyle}>
