@@ -2,13 +2,15 @@
 import React from 'react'
 import Navbar from './Navbar'
 
+const imgSource = "https://github.com/AminMortezaie/nura-proof-chain-ui/blob/main/app/img/header.jpeg?raw=true&auto=format&fit=crop&w=2850&q=80"
+
 
 export default function HeroSection() {
   return (
     <div className="relative overflow-hidden bg-white">
       <div className="mx-auto max-w-7xl">
         <div className="relative z-10 bg-white pb-8 sm:pb-16 md:pb-20 lg:w-full lg:max-w-2xl lg:pb-28 xl:pb-32">
-          <Navbar/>
+          <Navbar />
           <main className="mx-auto mt-10 max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
             <div className="sm:text-center lg:text-left">
               <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-3xl md:text-5xl">
@@ -43,8 +45,7 @@ export default function HeroSection() {
       <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
         <img
           className="h-56 w-full object-cover sm:h-72 md:h-96 lg:h-full lg:w-full"
-          src="https://images.unsplash.com/photo-1561555642-29be0d2dee1f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2850&q=80"
-
+          src={imgSource}
           alt=""
         />
       </div>

@@ -3,7 +3,7 @@ import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
-const Logo = "https://github.com/AminMortezaie/nura-proof-chain-ui/blob/main/myapp/src/assets/naico.png?raw=true"
+const Logo = "https://github.com/AminMortezaie/nura-proof-chain-ui/blob/main/app/img/naico.png?raw=true"
 
 
 const styles = {
