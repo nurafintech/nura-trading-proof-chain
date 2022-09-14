@@ -3,13 +3,14 @@ package cli
 import (
 	"flag"
 	"fmt"
-	"github.com/tensor-programming/golang-blockchain/blockchain"
-	"github.com/tensor-programming/golang-blockchain/network"
-	"github.com/tensor-programming/golang-blockchain/wallet"
 	"log"
 	"os"
 	"runtime"
 	"strconv"
+
+	"github.com/tensor-programming/golang-blockchain/blockchain"
+	"github.com/tensor-programming/golang-blockchain/network"
+	"github.com/tensor-programming/golang-blockchain/wallet"
 )
 
 type CommandLine struct{}
@@ -67,6 +68,7 @@ func (cli *CommandLine) listAddresses(nodeID string) {
 }
 
 func (cli *CommandLine) createWallet(nodeID string) {
+	makeDirByName("./tmp")
 	wallets, _ := wallet.CreateWallets(nodeID)
 	address := wallets.AddWallet()
 	wallets.SaveFile(nodeID)
@@ -107,12 +109,13 @@ func (cli *CommandLine) createBlockChain(address, nodeID string) {
 	if !wallet.ValidateAddress(address) {
 		log.Panic("Address is not Valid")
 	}
+
 	chain := blockchain.InitBlockChain(address, nodeID)
 	defer chain.Database.Close()
 
 	UTXOSet := blockchain.UTXOSet{chain}
 	UTXOSet.Reindex()
-
+	makeNodesDir()
 	fmt.Println("Finished!")
 }
 
@@ -137,6 +140,7 @@ func (cli *CommandLine) getBalance(address, nodeID string) {
 }
 
 func (cli *CommandLine) send(from, to string, amount int, nodeID string, mineNow bool) {
+
 	if !wallet.ValidateAddress(to) {
 		log.Panic("Address is not Valid")
 	}
