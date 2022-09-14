@@ -6,6 +6,7 @@ import (
 	"encoding/hex"
 	"errors"
 	"fmt"
+	"github.com/tensor-programming/golang-blockchain/trade"
 	"log"
 	"os"
 	"path/filepath"
@@ -187,7 +188,7 @@ func (chain *BlockChain) GetBlockHashes() [][]byte {
 	return blocks
 }
 
-func (chain *BlockChain) MineBlock(transactions []*Transaction) *Block {
+func (chain *BlockChain) MineBlock(transactions []*Transaction, detail []trade.SignalDetail) *Block {
 	var lastHash []byte
 	var lastHeight int
 
@@ -214,7 +215,7 @@ func (chain *BlockChain) MineBlock(transactions []*Transaction) *Block {
 	})
 	Handle(err)
 
-	newBlock := CreateBlock(transactions, lastHash, lastHeight+1)
+	newBlock := CreateBlock(transactions, lastHash, lastHeight+1, detail)
 
 	err = chain.Database.Update(func(txn *badger.Txn) error {
 		err := txn.Set(newBlock.Hash, newBlock.Serialize())

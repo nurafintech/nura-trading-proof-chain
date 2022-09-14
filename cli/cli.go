@@ -3,14 +3,13 @@ package cli
 import (
 	"flag"
 	"fmt"
+	"github.com/tensor-programming/golang-blockchain/blockchain"
+	"github.com/tensor-programming/golang-blockchain/network"
+	"github.com/tensor-programming/golang-blockchain/wallet"
 	"log"
 	"os"
 	"runtime"
 	"strconv"
-
-	"github.com/tensor-programming/golang-blockchain/blockchain"
-	"github.com/tensor-programming/golang-blockchain/network"
-	"github.com/tensor-programming/golang-blockchain/wallet"
 )
 
 type CommandLine struct{}
@@ -84,7 +83,13 @@ func (cli *CommandLine) printChain(nodeID string) {
 		block := iter.Next()
 
 		fmt.Printf("Hash: %x\n", block.Hash)
+		for _, trd := range block.TradeData {
+			fmt.Println(trd)
+		}
+		fmt.Printf("Trades: %x\n", block.TradeData)
+
 		fmt.Printf("Prev. hash: %x\n", block.PrevHash)
+
 		pow := blockchain.NewProof(block)
 		fmt.Printf("PoW: %s\n", strconv.FormatBool(pow.Validate()))
 		for _, tx := range block.Transactions {
@@ -138,21 +143,27 @@ func (cli *CommandLine) send(from, to string, amount int, nodeID string, mineNow
 	if !wallet.ValidateAddress(from) {
 		log.Panic("Address is not Valid")
 	}
+
 	chain := blockchain.ContinueBlockChain(nodeID)
+
 	UTXOSet := blockchain.UTXOSet{chain}
+
 	defer chain.Database.Close()
 
 	wallets, err := wallet.CreateWallets(nodeID)
+
 	if err != nil {
+
 		log.Panic(err)
 	}
+	fmt.Println("wallet")
 	wallet := wallets.GetWallet(from)
-
+	fmt.Println(wallet)
 	tx := blockchain.NewTransaction(&wallet, to, amount, &UTXOSet)
 	if mineNow {
 		cbTx := blockchain.CoinbaseTx(from, "")
 		txs := []*blockchain.Transaction{cbTx, tx}
-		block := chain.MineBlock(txs)
+		block := chain.MineBlock(txs, nil)
 		UTXOSet.Update(block)
 	} else {
 		network.SendTx(network.KnownNodes[0], tx)
